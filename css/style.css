@@ -1,0 +1,32 @@
+.numberlist{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_none{
+    display: none;
+}
+
+.box_style{
+    border:1px solid black;
+    height: 100px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_custom{
+    padding: 20px 50px;
+    border-radius: 10px;
+    font-weight: bolder;
+}
