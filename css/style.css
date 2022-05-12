@@ -1,4 +1,4 @@
-.numberlist{
+.numberlist,.box_input{
     display: flex;
     list-style: none;
     gap: 30px;
@@ -10,7 +10,7 @@
     display: none;
 }
 
-.box_style{
+.box_style,.user_input{
     border:1px solid black;
     height: 100px;
     width: 50px;

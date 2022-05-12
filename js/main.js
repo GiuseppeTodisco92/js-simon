@@ -12,7 +12,7 @@ function randomInteger(min,max){
 }
 
 function countDown(){
-    let y = 4
+    let y = 2
     const container = document.querySelector(".container");
     const countNumber = document.createElement("div");
     let countdown = setInterval(function(){
@@ -22,11 +22,38 @@ function countDown(){
             
             if (y == 0){
                 clearInterval(countdown);
+                countNumber.classList.add("display_none");
+                createInput();
             } 
             y--;
             
     },1000)
 }
+
+function createInput(){
+    submit.classList.remove("display_none");
+    let boxInput = document.querySelector(".box_input");
+    for (i=0; i<5 ;i++){
+        let userInput = document.createElement("input");
+        userInput.classList.add("user_input");
+        userInput.setAttribute("type","number");
+        boxInput.append(userInput);
+        submit.addEventListener("click", function(){
+            let x = userInput.value;
+            console.log(x);
+            x = parseFloat(x);
+            console.log(x); // converte stringa in numero
+            userNumbers.push(x);
+            console.log("array utente",userNumbers)
+        })
+        
+    }
+    
+
+}
+
+
+
 
 /*--------------
     MAIN
@@ -34,7 +61,10 @@ function countDown(){
 let numbers = [];
 let i = 0 ;
 const n = 5;
+let userNumbers = [];
 
+const submit = document.getElementById("submit");
+    submit.classList.add("display_none");
 const btn = document.querySelector(".btn_custom");
 const btnBox = document.querySelector(".box_btn")
 let numberList = document.querySelector(".numberlist");
@@ -66,6 +96,8 @@ btn.addEventListener("click",function(){
         if(i == 2){
             clearInterval(timerNumber);
             numberList.classList.add("display_none");
+            
+            // 3-countdown 30 secondi 
             countDown();
         }
 },1000)
@@ -74,7 +106,7 @@ btn.addEventListener("click",function(){
 
 
 
-
-// 3-countdown 30 secondi 
-
 // 4-inserisco i numeri visualizzati tramite prompt li confronto con quelli generati e restituisco quanti numeri ho indovinato
+
+
+
