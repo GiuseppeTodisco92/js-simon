@@ -12,17 +12,18 @@ function randomInteger(min,max){
 }
 
 function countDown(){
-    let y = 2
+    let y = 5;
     const container = document.querySelector(".container");
     const countNumber = document.createElement("div");
     let countdown = setInterval(function(){
             console.log(y);
+            countNumber.classList.add("countdown_box");
             countNumber.innerHTML= y;
             container.append(countNumber);
             
             if (y == 0){
+                countNumber.style.display = "none";
                 clearInterval(countdown);
-                countNumber.classList.add("display_none");
                 createInput();
             } 
             y--;
@@ -31,25 +32,43 @@ function countDown(){
 }
 
 function createInput(){
+    
     submit.classList.remove("display_none");
+    submit.classList.add("btn_custom")
     let boxInput = document.querySelector(".box_input");
+    const result = document.querySelector(".result");
+    let guessed = 0;
     for (i=0; i<5 ;i++){
         let userInput = document.createElement("input");
         userInput.classList.add("user_input");
         userInput.setAttribute("type","number");
         boxInput.append(userInput);
+        
+        
         submit.addEventListener("click", function(){
             let x = userInput.value;
-            console.log(x);
             x = parseFloat(x);
-            console.log(x); // converte stringa in numero
             userNumbers.push(x);
-            console.log("array utente",userNumbers)
-        })
+            console.log("array utente",userNumbers);
+            if (numbers.includes(x)){
+                userInput.style.background = "lightgreen";
+                guessed ++ ;
+                console.log("numero uguale");
+            } else {
+                userInput.style.background = "red";
+            }
+        })  
         
     }
-    
+    // console.log("array utente",userNumbers);
+    // confronto();
+}
 
+function confronto(){
+    for (i=0; i < n ;i++){
+        x = userNumbers;
+       
+    }
 }
 
 
@@ -62,13 +81,13 @@ let numbers = [];
 let i = 0 ;
 const n = 5;
 let userNumbers = [];
-
 const submit = document.getElementById("submit");
-    submit.classList.add("display_none");
+submit.classList.add("display_none");
 const btn = document.querySelector(".btn_custom");
 const btnBox = document.querySelector(".box_btn")
 let numberList = document.querySelector(".numberlist");
-    numberList.classList.add("display_none")
+numberList.classList.add("display_none")
+
 
 // 1-genero dei numeri casuali (passandoli in un array)
 while( numbers.length < n){
@@ -103,10 +122,6 @@ btn.addEventListener("click",function(){
 },1000)
 
 })
-
-
-
-// 4-inserisco i numeri visualizzati tramite prompt li confronto con quelli generati e restituisco quanti numeri ho indovinato
 
 
 
