@@ -12,13 +12,13 @@ function randomInteger(min,max){
 }
 
 function countDown(){
-    let y = 5;
+    let y = 3;
     const container = document.querySelector(".container");
     const countNumber = document.createElement("div");
     let countdown = setInterval(function(){
             console.log(y);
-            countNumber.classList.add("countdown_box");
-            countNumber.innerHTML= y;
+            countNumber.classList.add("countdown_box","turn");
+            // countNumber.innerHTML= y;
             container.append(countNumber);
             
             if (y == 0){
