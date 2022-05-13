@@ -37,7 +37,7 @@ function createInput(){
     submit.classList.add("btn_custom")
     let boxInput = document.querySelector(".box_input");
     const result = document.querySelector(".result");
-    let guessed = 0;
+    let y = 0; //variabile per numeri indovinati
     for (i=0; i<5 ;i++){
         let userInput = document.createElement("input");
         userInput.classList.add("user_input");
@@ -48,31 +48,45 @@ function createInput(){
         submit.addEventListener("click", function(){
             let x = userInput.value;
             x = parseFloat(x);
-            userNumbers.push(x);
-            console.log("array utente",userNumbers);
-            if (numbers.includes(x)){
-                userInput.style.background = "lightgreen";
-                guessed ++ ;
-                console.log("numero uguale");
-            } else {
-                userInput.style.background = "red";
+            if(userNumbers.includes(x) === false){
+                userNumbers.push(x);
+            } else{
+                //! cercare di svuotare l array ogni volta che metti un valore a doppio
+                userNumbers.splice(0,userNumbers.length);
             }
+            console.log("array utente",userNumbers);
+
+            if(userNumbers.length === 5){
+                showNumber();
+            } 
         })  
-        
+         
     }
-    // console.log("array utente",userNumbers);
-    // confronto();
+    
 }
 
-function confronto(){
-    for (i=0; i < n ;i++){
-        x = userNumbers;
-       
+function showNumber (){
+    let boxInput = document.querySelector(".box_input");
+    boxInput.classList.add("display_none");
+    submit.classList.add("display_none");
+    numberList.classList.remove("display_none");
+    let y = 0;
+    for (i=0; i<userNumbers.length ;i++){
+        const user = document.createElement("div");
+        user.classList.add("user_input");
+        user.innerHTML = userNumbers[i];
+        numberList.append(user);
+        if (numbers.includes(userNumbers[i])){
+            user.style.background = "lightgreen";
+            y += 1 ;
+            console.log(y);
+        } else {
+            user.style.background = "red";
+        }
+
     }
+
 }
-
-
-
 
 /*--------------
     MAIN
